@@ -16,13 +16,13 @@
     <meta property="og:title" content="VectorCrop - Software Development Agency.">
     <meta property="og:description"
         content="inspire the next || Meet your future goals with VectorCrop. || We will deliver you marketing and technology solutions in the best way.">
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
 
     <!-- Site Title -->
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/images/fav.png" />
+    <link rel="shortcut icon" type="image/png" href="assets/images/fav.png" />
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
         crossorigin="anonymous"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
@@ -825,13 +826,13 @@
                                         <h3 class="title">Get in Touch</h3>
                                     </div>
 
-                                    <form action="index.html">
+                                    <form id="submit-form" action="">
                                         <div class="form_group">
                                             <input type="text" name="name" id="name" placeholder="Name"
                                                 autocomplete="off">
                                         </div>
                                         <div class="form_group">
-                                            <input type="email" name="semail" id="semail" placeholder="Email"
+                                            <input type="email" name="email" id="semail" placeholder="Email"
                                                 autocomplete="off">
                                         </div>
                                         <div class="form_group">
@@ -1547,40 +1548,26 @@
                             </div>
 
                             <div class="tj-contact-form">
-                                <form action="index.html">
+                                <form id="submit-form" action="">
                                     <div class="row gx-3">
                                         <div class="col-sm-12">
                                             <div class="form_group">
                                                 <input type="text" name="name" id="name" placeholder="Your name"
-                                                    autocomplete="off">
+                                                    autocomplete="on">
                                             </div>
                                         </div>
-
                                         <div class="col-sm-6">
                                             <div class="form_group">
                                                 <input type="email" name="email" id="email" placeholder="Email address"
-                                                    autocomplete="off">
+                                                    autocomplete="on">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
                                                 <input type="tel" name="phone" id="phone" placeholder="Phone number"
-                                                    autocomplete="off">
+                                                    autocomplete="on">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-12">
-                                            <div class="form_group">
-                                                <select name="service" id="service" class="tj-nice-select">
-                                                    <option value="" selected disabled>Choose Service</option>
-                                                    <option value="braning">Branding Design</option>
-                                                    <option value="web">Web Development</option>
-                                                    <option value="uxui">UI/UX Design</option>
-                                                    <option value="app">App Development</option>
-                                                    <option value="app">Photo</option>
-
-                                                </select>
-                                            </div>
-                                        </div> -->
                                         <div class="col-12">
                                             <div class="form_group">
                                                 <textarea name="message" id="message" placeholder="Message"></textarea>
@@ -1669,6 +1656,30 @@
         </div>
     </footer>
     <!-- FOOTER AREA END -->
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- JavaScript for AJAX form submission -->
+    <script>
+        $(document).ready(function () {
+            $("#submit-form").submit((e) => {
+                e.preventDefault();
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbxC4ZUygLaqQPrGkvnuPvrQNTVj6oEjJklvoGXpuo5bppPQJxlxNY7NZiXB-RMflF-Y2A/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "post",
+                    success: function (response) {
+                        alert("Form submitted successfully");
+                        // Optionally, you can redirect the user after successful submission
+                        // window.location.href = "https://example.com";
+                    },
+                    error: function (err) {
+                        alert("Something went wrong. Please try again later.");
+                    }
+                });
+            });
+        });
+    </script>
 
 
     <!-- CSS here -->
