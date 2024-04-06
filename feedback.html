@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="inspire the next || Meet your future goals with VectorCrop. || We will deliver you marketing and technology solutions in the best way." />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="black">
+
+    <meta charset="UTF-8">
+    <title>VectorCrop - Software Development Agency.</title>
+    <meta property="og:title" content="VectorCrop - Software Development Agency.">
+    <meta property="og:description"
+        content="inspire the next || Meet your future goals with VectorCrop. || We will deliver you marketing and technology solutions in the best way.">
+    <link rel="shortcut icon" href="assets/images/favico.png" type="image/x-icon">
+
+    <!-- Site Title -->
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="assets/images/favico.png" />
+    <link rel="shortcut icon" type="image/png" href="assets/images/favico.png" />
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-pro.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon_gerold.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/backToTop.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/odometer-theme-default.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+
+    <meta property="og:image" content="https://www.vectorcrop.com/social.jpg">
+    <meta property="og:image:secure_url" content="https://www.vectorcrop.com/social.jpg">
+    <meta property="og:image:alt" content="VectorCrop">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</head>
+
+<body>
+    <!-- Preloader Area Start -->
+    <div class="preloader">
+        <img id="logo" src="assets/images/logo2.png" style="width: 100px; z-index: 9999;">
+
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card p-3 shadow">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <h4 class="heading text-center text-dark">We Want to Hear From You!.</h4><br>
+                        </div>
+                    </div>
+                    <form id="submit-form" action="" class="form-card">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <input type="text" name="name" placeholder="John Doe" required>
+                                    <label>Your Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <input type="text" name="mobile/email" placeholder="Mobile/Email" required>
+                                    <label>Your Email or Phone</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <textarea id="message" name="message" placeholder="" required></textarea>
+                                    <label>Message</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit" class="btn btn-pay placeicon">
+                            </div>
+                        </div>
+                    </form>
+                    <div id="loadingAnimation" class="text-center" style="display: none;">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div id="successMessage" class="row justify-content-center" style="display: none;">
+                        <div class="col-12">
+                            <center>
+                                <i class="bi bi-check-circle h1 text-success text-center"></i>
+                            </center><br>
+                            <h6 class="text-success text-center text-bold">Thank you for your valuable feedback </h3>
+                                <p class="text-dark text-center mb-4" style="padding-left: 70px; padding-right: 70px;">
+                                    We
+                                    greatly appreciate you taking the time to
+                                    share
+                                    your
+                                    thoughts with us. Your feedback is incredibly important as it helps us understand
+                                    how we can better serve you and improve our services.</p>
+                                <br>
+                                <center>
+                                    <a href="/index.html" class="btn btn-sm mb-3 btn-dark"><i
+                                            class="bi bi-arrow-left"></i>
+                                        Back to
+                                        home</a>
+                                </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- JavaScript for AJAX form submission -->
+
+    <script>
+        $(document).ready(function () {
+            $("#submit-form").submit((e) => {
+                e.preventDefault();
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbxC4ZUygLaqQPrGkvnuPvrQNTVj6oEjJklvoGXpuo5bppPQJxlxNY7NZiXB-RMflF-Y2A/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "post",
+                    success: function (response) {
+                        // Hide the form
+                        document.getElementById("submit-form").style.display = "none";
+                        // Show the loading animation
+                        document.getElementById("loadingAnimation").style.display = "block";
+                        setTimeout(function () {
+                            // Hide the loading animation
+                            document.getElementById("loadingAnimation").style.display = "none";
+                            // Show the success message
+                            document.getElementById("successMessage").style.display = "block";
+                        }, 1000);
+                    },
+                    error: function (err) {
+                        alert("Something went wrong. Please try again later.");
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000
+        }
+
+        .container-fluid {
+            background-color: #000000
+        }
+
+        .heading {
+            font-size: 20px;
+            margin-top: 35px;
+            margin-bottom: 30px;
+            padding-left: 20px
+        }
+
+        .card {
+            border-radius: 10px !important;
+            margin-top: 60px;
+            margin-bottom: 60px
+        }
+
+        .form-card {
+            margin-left: 20px;
+            margin-right: 20px
+        }
+
+        .form-card input,
+        .form-card textarea {
+            padding: 10px 15px 5px 15px;
+            border: none;
+            border: 1px solid lightgrey;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            margin-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            /* font-family: arial; */
+            color: #2C3E50;
+            font-size: 14px;
+            letter-spacing: 1px
+        }
+
+        .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+            margin-left: 2px;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .form-card input:focus,
+        .form-card textarea:focus {
+            -moz-box-shadow: 0px 0px 0px 1.5px skyblue !important;
+            -webkit-box-shadow: 0px 0px 0px 1.5px skyblue !important;
+            box-shadow: 0px 0px 0px 1.5px skyblue !important;
+            font-weight: 500;
+            border: 1px solid #304FFE;
+            outline-width: 0
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            overflow: hidden
+        }
+
+        .input-group input {
+            position: relative;
+            height: 80px;
+            margin-left: 1px;
+            margin-right: 1px;
+            border-radius: 6px;
+            padding-top: 30px;
+            padding-left: 25px
+        }
+
+        .input-group textarea {
+            position: relative;
+            height: 150px;
+            margin-left: 1px;
+            margin-right: 1px;
+            border-radius: 6px;
+            padding-top: 40px;
+            padding-left: 25px
+        }
+
+
+        .input-group label {
+            position: absolute;
+            height: 24px;
+            background: none;
+            border-radius: 6px;
+            line-height: 48px;
+            font-size: 15px;
+            color: gray;
+            width: 100%;
+            font-weight: 100;
+            padding-left: 25px
+        }
+
+        input:focus+label {
+            color: #304FFE
+        }
+
+        textarea:focus+label {
+            color: #304FFE
+        }
+
+        .btn-pay {
+            background-color: #304FFE;
+            height: 60px;
+            color: #ffffff !important;
+            font-weight: bold
+        }
+
+        .btn-pay:hover {
+            background-color: #3F51B5
+        }
+
+        .fit-image {
+            width: 100%;
+            object-fit: cover
+        }
+
+        img {
+            border-radius: 5px
+        }
+
+        .radio-group {
+            position: relative;
+            margin-bottom: 25px
+        }
+
+        .radio {
+            display: inline-block;
+            border-radius: 6px;
+            box-sizing: border-box;
+            border: 2px solid lightgrey;
+            cursor: pointer;
+            margin: 12px 25px 12px 0px
+        }
+
+        .radio:hover {
+            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2)
+        }
+
+        .radio.selected {
+            box-shadow: 0px 0px 0px 1px rgba(0, 0, 155, 0.4);
+            border: 2px solid blue
+        }
+
+        .label-radio {
+            font-weight: bold;
+            color: #000000
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            //For Card Number formatted input
+            var cardNum = document.getElementById('cr_no');
+            cardNum.onkeyup = function (e) {
+                if (this.value == this.lastValue) return;
+                var caretPosition = this.selectionStart;
+                var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                var parts = [];
+
+                for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+                    parts.push(sanitizedValue.substring(i, i + 4));
+                }
+
+                for (var i = caretPosition - 1; i >= 0; i--) {
+                    var c = this.value[i];
+                    if (c < '0' || c > '9') {
+                        caretPosition--;
+                    }
+                }
+                caretPosition += Math.floor(caretPosition / 4);
+
+                this.value = this.lastValue = parts.join('-');
+                this.selectionStart = this.selectionEnd = caretPosition;
+            }
+
+            //For Date formatted input
+            var expDate = document.getElementById('exp');
+            expDate.onkeyup = function (e) {
+                if (this.value == this.lastValue) return;
+                var caretPosition = this.selectionStart;
+                var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                var parts = [];
+
+                for (var i = 0, len = sanitizedValue.length; i < len; i += 2) {
+                    parts.push(sanitizedValue.substring(i, i + 2));
+                }
+
+                for (var i = caretPosition - 1; i >= 0; i--) {
+                    var c = this.value[i];
+                    if (c < '0' || c > '9') {
+                        caretPosition--;
+                    }
+                }
+                caretPosition += Math.floor(caretPosition / 2);
+
+                this.value = this.lastValue = parts.join('/');
+                this.selectionStart = this.selectionEnd = caretPosition;
+            }
+
+            // Radio button
+            $('.radio-group .radio').click(function () {
+                $(this).parent().parent().find('.radio').removeClass('selected');
+                $(this).addClass('selected');
+            });
+        })
+    </script>
+
+
+
+    <!-- CSS here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/nice-select.min.js"></script>
+    <script src="assets/js/backToTop.js"></script>
+    <script src="assets/js/smooth-scroll.js"></script>
+    <script src="assets/js/appear.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/one-page-nav.js"></script>
+    <script src="assets/js/lightcase.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/magnific-popup.js"></script>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
