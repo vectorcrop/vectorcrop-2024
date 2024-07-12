@@ -5,14 +5,24 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="" />
+  <meta name="description"
+    content="inspire the next || Meet your future goals with VectorCrop. || We will deliver you marketing and technology solutions in the best way." />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="black">
+
+  <meta charset="UTF-8">
+  <title>VectorCrop - Software Development Agency.</title>
+  <meta property="og:title" content="VectorCrop - Software Development Agency.">
+  <meta property="og:description"
+    content="inspire the next || Meet your future goals with VectorCrop. || We will deliver you marketing and technology solutions in the best way.">
+  <link rel="shortcut icon" href="assets/images/favico.png" type="image/x-icon">
 
   <!-- Site Title -->
-  <title>Blog - Gerold - Personal Portfolio HTML5 Template</title>
 
   <!-- Place favicon.ico in the root directory -->
-  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
-  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/favico.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/images/favico.png" />
 
   <!-- CSS here -->
   <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -25,30 +35,180 @@
   <link rel="stylesheet" href="assets/css/odometer-theme-default.css">
   <link rel="stylesheet" href="assets/css/magnific-popup.css">
 
+  <meta property="og:image" content="https://www.vectorcrop.com/social.jpg">
+  <meta property="og:image:secure_url" content="https://www.vectorcrop.com/social.jpg">
+  <meta property="og:image:alt" content="VectorCrop">
+
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
+<style>
+  .tj-header-area .header-info-list ul li a {
+    color: var(--tj-white);
+    font-size: 20px;
+    font-weight: var(--tj-fw-medium);
+    text-decoration: none;
+    margin-left: -50px;
+  }
+
+  .text-gradient__indigo-red {
+    padding-right: 0.05em;
+    background-image: linear-gradient(207deg, #ef4848 23%, #63a8f1 87%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tj-header-area.header-absolute {
+    position: absolute;
+    background-color: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+  }
+
+  .tj-header-area.header-2 {
+    width: 100%;
+    position: fixed;
+    top: -90px;
+    left: 0;
+    padding: 15px 0;
+    z-index: 100;
+    opacity: 0;
+    transition: 0.3s;
+    background-color: rgb(0 0 0 / 22%);
+    /* Adjust alpha value for transparency */
+    backdrop-filter: blur(10px);
+    /* Adjust blur radius as needed */
+    -webkit-backdrop-filter: blur(10px);
+    /* For Safari */
+    box-shadow: 0 0 30px rgba(135, 80, 247, 0.2);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .tj-btn-secondary {
+    text-decoration: none;
+    font-size: var(--tj-fz-btn);
+    line-height: 1;
+    font-weight: var(--tj-fw-medium);
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 17px 35px;
+    border: 1px solid var(--tj-theme-primary);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    letter-spacing: 1px;
+  }
+
+
+  .tj-header-area {
+    padding: 28px 0 28px;
+
+  }
+
+  .hero-section .intro_text svg text {
+    text-transform: uppercase;
+    animation: stroke 4s;
+    stroke-width: 1.2;
+    stroke: #4b4b4b;
+    fill: transparent;
+    font-size: 166px;
+    display: inline-block;
+    opacity: 0.4;
+  }
+
+  .owl-dots .owl-dot span {
+    width: 8px;
+    height: 8px;
+    background: #191919;
+    border-radius: 50%;
+    display: block;
+    opacity: 0.2;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #logo {
+    animation: fade 2s ease-in-out;
+  }
+
+  /* @keyframes glaze {
+        0% {
+            opacity: 0;
+            filter: blur(10px);
+        }
+
+        100% {
+            opacity: 1;
+            filter: blur(0px);
+        }
+    }
+
+    #logo {
+        animation: glaze 1s ease-in-out;
+    } */
+
+
+  .limited-offer {
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #8750f7;
+    padding: 5px 0;
+    margin-top: -30px;
+  }
+
+  .limited-offer p {
+    margin: 0;
+    font-size: 14px;
+    /* Example font size */
+    color: #ffffff;
+    /* Example text color */
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .contact-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+</style>
 
 <body class="absolute_header">
 
   <!-- Preloader Area Start -->
-  <div class="preloader">
-    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-      <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-    </svg>
+  <!-- <div class="preloader">
+        <img id="logo" src="assets/images/logo2.png" style="width: 100px; z-index: 9999;">
 
-    <div class="preloader-heading">
-      <div class="load-text">
-        <span>L</span>
-        <span>o</span>
-        <span>a</span>
-        <span>d</span>
-        <span>i</span>
-        <span>n</span>
-        <span>g</span>
-      </div>
-    </div>
-  </div>
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+
+        <div class="preloader-heading">
+            <div class="load-text">
+                <span>VectorCrop</span>
+
+            </div>
+        </div>
+    </div> -->
   <!-- Preloader Area End -->
 
   <!-- start: Back To Top -->
@@ -62,37 +222,38 @@
 
   <!-- HEADER START -->
   <header class="tj-header-area header-absolute">
+
+
     <div class="container">
       <div class="row">
         <div class="col-12 d-flex flex-wrap align-items-center">
 
           <div class="logo-box">
             <a href="index.html">
-              <img src="assets/img/logo/logo.png" alt="">
+              <img src="assets/images/mainlogo.png" width="40px" alt="">
             </a>
           </div>
 
-          <div class="header-info-list d-none d-md-inline-block">
+          <div class="header-info-list text1 d-md-inline-block">
             <ul class="ul-reset">
-              <li><a href="mailto:mail@gerolddesign.com">mail@gerolddesign.com</a></li>
+              <li><a href="index.html">VectorCrop.</a></li>
             </ul>
           </div>
 
           <div class="header-menu">
             <nav>
               <ul>
-                <li><a href="#services-section">Services</a></li>
-                <li><a href="#works-section">Works</a></li>
-                <li><a href="#resume-section">Resume</a></li>
-                <li><a href="#skills-section">Skills</a></li>
-                <li><a href="#testimonials-section">Testimonials</a></li>
-                <li><a href="#contact-section">Contact</a></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#works">Our Works</a></li>
+                <li><a href="#clients">Our Clients</a></li>
               </ul>
             </nav>
           </div>
 
           <div class="header-button">
-            <a href="#" class="btn tj-btn-primary">Hire me!</a>
+            <a href="#contact" class="bbn btn tj-btn-primary">Contact Us</a>
           </div>
 
           <div class="menu-bar d-lg-none">
@@ -114,31 +275,30 @@
 
           <div class="logo-box">
             <a href="index.html">
-              <img src="assets/img/logo/logo.png" alt="">
+              <img src="assets/images/mainlogo.png" width="40px" alt="">
             </a>
           </div>
 
-          <div class="header-info-list d-none d-md-inline-block">
+          <div class="header-info-list text1 d-md-inline-block">
             <ul class="ul-reset">
-              <li><a href="mailto:mail@gerolddesign.com">mail@gerolddesign.com</a></li>
+              <li><a href="index.html">VectorCrop.</a></li>
             </ul>
           </div>
 
           <div class="header-menu">
             <nav>
               <ul>
-                <li><a href="#services-section">Services</a></li>
-                <li><a href="#works-section">Works</a></li>
-                <li><a href="#resume-section">Resume</a></li>
-                <li><a href="#skills-section">Skills</a></li>
-                <li><a href="#testimonials-section">Testimonials</a></li>
-                <li><a href="#contact-section">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#works">Our Works</a></li>
+                <li><a href="#clients">Our Clients</a></li>
               </ul>
             </nav>
           </div>
 
           <div class="header-button">
-            <a href="#" class="btn tj-btn-primary">Hire me!</a>
+            <a href="index.html#contact" class="bbn btn tj-btn-primary">Contact Us</a>
           </div>
 
           <div class="menu-bar d-lg-none">
@@ -158,16 +318,16 @@
   <main class="site-content" id="content">
 
     <!-- START: Breadcrumb Area -->
-    <section class="breadcrumb_area" data-bg-image="./assets/img/breadcrumb/breadcrumb-bg.jpg" data-bg-color="#140C1C">
+    <section class="breadcrumb_area" data-bg-image="./assets/images/abbg.png" data-bg-color="#140C1C">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="breadcrumb_content d-flex flex-column align-items-center">
-              <h2 class="title wow fadeInUp" data-wow-delay=".3s">Blog</h2>
+              <h2 class="title wow fadeInUp" data-wow-delay=".3s">About Us</h2>
               <div class="breadcrumb_navigation wow fadeInUp" data-wow-delay=".5s">
                 <span><a href="index.html">Home</a></span>
                 <i class="far fa-long-arrow-right"></i>
-                <span class="current-item">Blog</span>
+                <span class="current-item">About Us</span>
               </div>
             </div>
           </div>
@@ -185,28 +345,96 @@
               <article class="tj-post wow fadeInUp" data-wow-delay=".3s">
                 <div class="tj-post__thumb">
                   <a href="blog-details.html">
-                    <img src="./assets/img/blog/blog-4.jpg" alt="">
+                    <img src="./assets/images/vcbg.png" alt="">
                   </a>
 
-                  <a href="#" class="category">Tutorial</a>
+                  <a href="#" class="category">Since 2021</a>
                 </div>
                 <div class="tj-post__content">
-                  <div class="tj-post__meta entry-meta">
+                  <!-- <div class="tj-post__meta entry-meta">
                     <span><i class="fa-light fa-user"></i> <a href="#">By Admin</a></span>
                     <span><i class="fa-light fa-calendar-days"></i> 11 Jul, 2023</span>
                     <span><i class="fa-light fa-comments"></i><a href="#">Comments (3)</a></span>
-                  </div>
+                  </div> -->
                   <h3 class="tj-post__title entry-title">
-                    <a href="blog-details.html">The Role of Technology in Modern Logistics Management</a>
+                    <a href="blog-details.html">Yah, We Are Elevating Digital Possibilities
+                    </a>
                   </h3>
                   <div class="tj-post__excerpt">
-                    <p>Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum
-                      quia quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port
-                      lacus quis enim var sed efficitur turpis gilla sed sit...</p>
+                    <p>Welcome to VectorCrop, where innovation meets creativity. Established four years ago in the
+                      vibrant city of Calicut, India, VectorCrop has rapidly evolved from a humble freelancing endeavor
+                      into a dynamic and versatile software development company. Our team of seven dedicated
+                      professionals brings together a rich tapestry of skills and experiences, ensuring that every
+                      project we undertake is infused with passion and precision.</p>
                   </div>
-                  <div class="tj-post__btn">
-                    <a href="blog-details.html" class="tj-btn-primary">Read more</a>
+
+                  <div class="tj-post__excerpt">
+                    <h4 class="mt-4">Who We Are</h4>
+                    <p>At VectorCrop, we pride ourselves on our diverse capabilities. Our expertise spans across various
+                      domains, including web development, app development, UI/UX design, software development, and more.
+                      Our multidisciplinary approach allows us to offer comprehensive solutions tailored to meet the
+                      unique needs of our clients.</p>
                   </div>
+
+                </div>
+                <style>
+                  .card22 {
+                    background-color: #8750f7;
+                  }
+
+                  .card22:hover {
+                    background-color: #6e2df0;
+                    color: white;
+                  }
+                </style>
+                <div class="container-lg mt-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class=" shadow">
+                        <article class="card22 tj-post wow fadeInUp" data-wow-delay=".3s">
+
+                          <div class="tj-post__content">
+                            <img src="assets/images/mission.png" class="mb-4" width="70px">
+
+                            <h3 class="tj-post__title entry-title">
+                              <a href="#!">Our Mission</a>
+                            </h3>
+                            <div class="tj-post__excerpt">
+                              <p>At VectorCrop, our mission is to harness the power of technology to deliver innovative,
+                                high-quality digital solutions that drive business success and enhance user experiences.
+                                We strive to provide exceptional service through collaboration, creativity, and a
+                                relentless commitment to excellence. </p>
+                            </div>
+
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class=" shadow">
+                        <article class="card22 tj-post wow fadeInUp" data-wow-delay=".3s">
+
+                          <div class="tj-post__content">
+                            <img src="assets/images/mission.png" class="mb-4" width="70px">
+
+                            <h3 class="tj-post__title entry-title">
+                              <a href="#!">Our Vision</a>
+                            </h3>
+                            <div class="tj-post__excerpt">
+                              <p>Our vision is to be a global leader in the digital solutions industry, recognized for
+                                our cutting-edge technology, creative ingenuity, and unwavering dedication to client
+                                satisfaction. We aim to continuously evolve and expand our expertise, setting new
+                                standards of excellence and innovation. </p>
+                            </div>
+
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+
+
+
                 </div>
               </article>
 
