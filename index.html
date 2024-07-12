@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
         crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
@@ -189,6 +189,32 @@
             padding-bottom: 80px;
         }
     }
+
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 110px;
+        right: 46px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        /* box-shadow: 2px 2px 3px #999; */
+        z-index: 100;
+    }
+
+    .my-float {
+        margin-top: 16px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .float {
+            right: 15px;
+            bottom: 77px;
+        }
+    }
 </style>
 
 <body>
@@ -219,6 +245,10 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
+
+    <a href="https://api.whatsapp.com/send?phone=7907149715" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
     <!-- end: Back To Top -->
 
 
@@ -479,12 +509,12 @@
 
 
                         </p>
-                        <div class="button-box d-flex flex-wrap align-items-center">
+                        <!-- <div class="button-box d-flex flex-wrap align-items-center">
                             <a href="about.html" class="btn tj-btn-secondary wow fadeInLeft text-dark mt-3"
                                 data-wow-delay="0.5s">Know
                                 More <i class="bi bi-arrow-right"></i></a>
 
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="col-md-6">
@@ -1575,6 +1605,91 @@
             </div>
         </section> -->
         <!-- BLOG SECTION END -->
+
+        <!-- <section class="contact-section bg-white" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+        <!-- Client 2 - Bootstrap Brain Component -->
+        <section class="py-3 py-md-5 py-xl-8 mt-5">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                        <h2 class="fs-6 text-secondary mb-2 text-uppercase text-center">Our Clients</h2>
+                        <h2 class="mb-4 section-title text-dark text-center">Trusted by over 50+ clients.</h2>
+                        <p class=" text-secondary mb-5 text-center">Our clients are our top priority, and we are
+                            committed to providing them with the highest level of service.</p>
+                        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container overflow-hidden">
+                <div class="row gy-4">
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/ief.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/kshema.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/doha.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/forskor.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/dime.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/mouzy.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/infinite.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/edu.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/blc.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/indo.png">
+                    </div>
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/interval.png">
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-xl-3 text-center">
+                        <img src="assets/images/clients/vision.png">
+                    </div>
+
+                </div>
+                <center>
+                    <a href="https://works.vectorcrop.com" target="_blank"
+                        class="btn tj-btn-secondary mt-4 text-dark">View
+                        More</a>
+                </center>
+            </div>
+        </section>
+
 
         <!-- CONTACT SECTION START -->
         <section class="contact-section bg-white" id="contact">
