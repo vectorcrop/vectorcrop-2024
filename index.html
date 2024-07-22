@@ -215,6 +215,11 @@
             bottom: 77px;
         }
     }
+
+    .tj-header-area .logo-box {
+        max-width: 160px;
+        width: 100%;
+    }
 </style>
 
 <body>
@@ -246,7 +251,7 @@
         </svg>
     </div>
 
-    <a href="https://api.whatsapp.com/send?phone=7907149715" class="float" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=8304053580" class="float" target="_blank">
         <i class="fa fa-whatsapp my-float"></i>
     </a>
     <!-- end: Back To Top -->
@@ -266,15 +271,15 @@
 
                     <div class="logo-box">
                         <a href="index.html">
-                            <img src="assets/images/mainlogo.png" width="40px" alt="">
+                            <img src="assets/images/logowhite.png" alt="vectorcrop logo">
                         </a>
                     </div>
 
-                    <div class="header-info-list text1 d-md-inline-block">
+                    <!-- <div class="header-info-list text1 d-md-inline-block">
                         <ul class="ul-reset">
                             <li><a href="index.html">VectorCrop.</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <div class="header-menu">
                         <nav>
@@ -282,7 +287,7 @@
                                 <li><a href="index.html#home">Home</a></li>
                                 <li><a href="#about">About Us</a></li>
                                 <li><a href="#services">Our Services</a></li>
-                                <li><a href="#works">Our Works</a></li>
+                                <!-- <li><a href="#works">Our Works</a></li> -->
                                 <li><a href="#clients">Our Clients</a></li>
                             </ul>
                         </nav>
@@ -311,15 +316,15 @@
 
                     <div class="logo-box">
                         <a href="index.html">
-                            <img src="assets/images/mainlogo.png" width="40px" alt="">
+                            <img src="assets/images/logowhite.png" alt="vectorcrop logo">
                         </a>
                     </div>
 
-                    <div class="header-info-list text1 d-md-inline-block">
+                    <!-- <div class="header-info-list text1 d-md-inline-block">
                         <ul class="ul-reset">
                             <li><a href="index.html">VectorCrop.</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <div class="header-menu">
                         <nav>
@@ -327,7 +332,7 @@
                                 <li><a href="index.html#home">Home</a></li>
                                 <li><a href="#about">About Us</a></li>
                                 <li><a href="#services">Our Services</a></li>
-                                <li><a href="#works">Our Works</a></li>
+                                <!-- <li><a href="#works">Our Works</a></li> -->
                                 <li><a href="#clients">Our Clients</a></li>
                             </ul>
                         </nav>
@@ -382,6 +387,12 @@
                         display: none;
                     }
 
+                    .tj-header-area .logo-box {
+                        max-width: 120px;
+                        width: 100%;
+                        margin-left: 10px;
+                    }
+
                 }
 
                 .hero-sub-title {
@@ -399,6 +410,40 @@
                     background: var(--tj-theme-accent-2);
                     z-index: 10;
                 }
+
+                .tj-header-area .menu-bar button {
+                    border: none;
+                    padding: 0;
+                    background-color: transparent;
+                    height: 18px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: relative;
+                    transform-origin: center center;
+                    transform: rotate(0deg);
+                    cursor: pointer;
+                    transition: transform 300ms ease;
+                }
+
+                .tj-header-area .menu-bar button span {
+                    height: 3px;
+                    width: 24px;
+                    display: block;
+                    background: var(--tj-white);
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out 0s;
+                    margin-left: auto;
+                }
+
+                .tj-header-area .menu-bar button span:nth-child(2) {
+                    width: 28px;
+                    transition-delay: 200ms;
+                }
+
+                .tj-header-area .menu-bar button span:nth-child(3) {
+                    width: 24px;
+                }
             </style>
             <div class="container banner1" id="home">
                 <div class="row align-items-center">
@@ -411,7 +456,7 @@
                             </h1>
 
                             <div class="hero-image-box d-md-none text-center wow fadeInRight" data-wow-delay="1.5s">
-                                <img src="assets/images/bg3.png" alt="">
+                                <img src="assets/images/bg4.png" alt="">
                             </div>
 
                             <p class="lead wow fadeInLeft" data-wow-delay="1.4s">We will deliver you marketing and
@@ -438,7 +483,7 @@
                     </div>
                     <div class="col-md-6 d-none d-md-block">
                         <div class=" text-center wow fadeInRight" data-wow-delay="1.5s">
-                            <img src="assets/images/bg3.png" alt="">
+                            <img src="assets/images/bg4.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -516,9 +561,14 @@
 
                         </div> -->
                     </div>
+                    <style>
+                        /* .abbg {
+                            margin-top: 100px;
+                        } */
+                    </style>
 
                     <div class="col-md-6">
-                        <img class="wow fadeInRight" data-wow-delay="0.6s" src="assets/images/b3.png">
+                        <img class="wow fadeInRight mt-5" data-wow-delay="0.6s" src="assets/images/about2.png">
                     </div>
                 </div>
             </div>
@@ -648,7 +698,7 @@
 
 
         <!-- Client 2 - Bootstrap Brain Component -->
-        <section class="py-3 py-md-5 py-xl-8 mt-5 mb-5">
+        <section class="py-3 py-md-5 py-xl-8 mt-5 mb-5" id="clients">
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
@@ -1198,7 +1248,7 @@
                                     <div class="text-box">
                                         <p class="text-dark">Phone</p>
                                         <a class="text-dark" href="tel:917907149715">+91 79071 49715 |</a>
-                                        <a class="text-dark" href="tel:917994465741"> +91 79944 65741</a>
+                                        <a class="text-dark" href="tel:918304053580"> +91 83040 53580</a>
 
                                     </div>
                                 </li>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission and Data Display</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="submit-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h2>Stored Data</h2>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function doGet(e) {
+            var sheet = SpreadsheetApp.openById("AKfycbywi3qBEKEGXmxbaZXc0MUnnLgEB1OXN_uqTrRNHsHRuH9_mCnhjM_ajFFn_7hP2s1KiA").getActiveSheet();
+            var data = sheet.getDataRange().getValues();
+            var result = [];
+            for (var i = 1; i < data.length; i++) {
+                var row = {};
+                row['name'] = data[i][0];
+                row['email'] = data[i][1];
+                result.push(row);
+            }
+            return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
+        }
+
+        function doPost(e) {
+            var sheet = SpreadsheetApp.openById("AKfycbywi3qBEKEGXmxbaZXc0MUnnLgEB1OXN_uqTrRNHsHRuH9_mCnhjM_ajFFn_7hP2s1KiA").getActiveSheet();
+            var name = e.parameter.name;
+            var email = e.parameter.email;
+            sheet.appendRow([name, email]);
+            return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+        }
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Submit form data
+            $("#submit-form").submit((e) => {
+                e.preventDefault();
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbywi3qBEKEGXmxbaZXc0MUnnLgEB1OXN_uqTrRNHsHRuH9_mCnhjM_ajFFn_7hP2s1KiA/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "post",
+                    success: function (response) {
+                        alert("Form submitted successfully");
+                        fetchData();
+                    },
+                    error: function (err) {
+                        alert("Something went wrong. Please try again later.");
+                    }
+                });
+            });
+
+            // Fetch and display data
+            function fetchData() {
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbywi3qBEKEGXmxbaZXc0MUnnLgEB1OXN_uqTrRNHsHRuH9_mCnhjM_ajFFn_7hP2s1KiA/exec",
+                    method: "get",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+                        var tableBody = $("#data-table tbody");
+                        tableBody.empty();
+                        data.forEach(function (row) {
+                            var tr = $("<tr></tr>");
+                            tr.append("<td>" + row.name + "</td>");
+                            tr.append("<td>" + row.email + "</td>");
+                            tableBody.append(tr);
+                        });
+                    },
+                    error: function (err) {
+                        alert("Failed to fetch data. Please try again later.");
+                    }
+                });
+            }
+
+            // Initial fetch
+            fetchData();
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
