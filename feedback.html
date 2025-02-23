@@ -44,6 +44,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
         crossorigin="anonymous"></script>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
@@ -67,7 +68,7 @@
                             <h4 class="heading text-center text-dark">We Want to Hear From You!.</h4><br>
                         </div>
                     </div>
-                    <form id="submit-form" action="" class="form-card">
+                    <form id="submit-form" action="" class="form-card" onsubmit="return validateCaptcha()">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
@@ -90,6 +91,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 text-center">
+                                <div class="g-recaptcha" data-sitekey="6LcWP-AqAAAAAEdE50lT9KY7Kjo6u1pHXs1fdF7t"></div>
+                            </div>
+                        </div>
+
                         <div class="row justify-content-center">
                             <div class="col-md-12">
                                 <input type="submit" value="Submit" class="btn btn-pay placeicon">
@@ -135,31 +142,41 @@
 
     <script>
         $(document).ready(function () {
-            $("#submit-form").submit((e) => {
+            $("#submit-form").submit(function (e) {
                 e.preventDefault();
+
+                var recaptchaResponse = grecaptcha.getResponse();
+                if (recaptchaResponse.length === 0) {
+                    alert("Please complete the CAPTCHA.");
+                    return false; // Prevent form submission
+                }
+
                 $.ajax({
                     url: "https://script.google.com/macros/s/AKfycbxC4ZUygLaqQPrGkvnuPvrQNTVj6oEjJklvoGXpuo5bppPQJxlxNY7NZiXB-RMflF-Y2A/exec",
                     data: $("#submit-form").serialize(),
                     method: "post",
-                    success: function (response) {
+                    beforeSend: function () {
                         // Hide the form
-                        document.getElementById("submit-form").style.display = "none";
-                        // Show the loading animation
-                        document.getElementById("loadingAnimation").style.display = "block";
+                        $("#submit-form").hide();
+                        // Show loading animation
+                        $("#loadingAnimation").show();
+                    },
+                    success: function (response) {
                         setTimeout(function () {
-                            // Hide the loading animation
-                            document.getElementById("loadingAnimation").style.display = "none";
-                            // Show the success message
-                            document.getElementById("successMessage").style.display = "block";
+                            $("#loadingAnimation").hide();
+                            $("#successMessage").show();
                         }, 1000);
                     },
-                    error: function (err) {
+                    error: function () {
                         alert("Something went wrong. Please try again later.");
+                        $("#submit-form").show();
+                        $("#loadingAnimation").hide();
                     }
                 });
             });
         });
     </script>
+
 
 
 
@@ -381,6 +398,18 @@
             });
         })
     </script>
+
+    <script>
+        function validateCaptcha() {
+            var response = grecaptcha.getResponse();
+            if (response.length === 0) {
+                alert("Please complete the CAPTCHA.");
+                return false; // Prevent form submission
+            }
+            return true;
+        }
+    </script>
+
 
 
 
