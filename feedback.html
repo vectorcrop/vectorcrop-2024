@@ -44,7 +44,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3987679242106578"
         crossorigin="anonymous"></script>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
@@ -68,32 +67,30 @@
                             <h4 class="heading text-center text-dark">We Want to Hear From You!.</h4><br>
                         </div>
                     </div>
-                    <form id="submit-form" action="" class="form-card" onsubmit="return validateCaptcha()">
+                    <form id="submit-form" action="" class="form-card">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" placeholder="John Doe" required>
+                                    <input type="text" name="name" id="name" placeholder="John Doe" required>
                                     <label>Your Name</label>
+                                    <div class="error-message" id="name-error"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="mobile/email" placeholder="Mobile/Email" required>
+                                    <input type="text" name="mobile/email" id="contact" placeholder="Mobile/Email" required>
                                     <label>Your Email or Phone</label>
+                                    <div class="error-message" id="contact-error"></div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group">
                                     <textarea id="message" name="message" placeholder="" required></textarea>
                                     <label>Message</label>
+                                    <div class="error-message" id="message-error"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-12 text-center">
-                                <div class="g-recaptcha" data-sitekey="6LcWP-AqAAAAAEdE50lT9KY7Kjo6u1pHXs1fdF7t"></div>
                             </div>
                         </div>
 
@@ -135,31 +132,148 @@
         </div>
     </div>
 
+    <!-- Human Verification Modal -->
+    <div id="verificationModal" class="verification-modal">
+        <div class="verification-modal-content">
+            <h3>Human Verification</h3>
+            <p>Please solve the following math problem to verify you're human:</p>
+            <div class="math-problem" id="mathProblem"></div>
+            <input type="number" id="verificationAnswer" class="verification-input" placeholder="Enter your answer">
+            <div class="verification-error" id="verificationError">Incorrect answer. Please try again.</div>
+            <div class="verification-buttons">
+                <button type="button" class="btn-verify" id="verifyBtn">Verify & Submit</button>
+                <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Include jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- JavaScript for AJAX form submission -->
-
+    <!-- JavaScript for Form Validation and Human Verification -->
     <script>
         $(document).ready(function () {
-            $("#submit-form").submit(function (e) {
-                e.preventDefault();
+            let correctAnswer = 0;
+            let formData = null;
 
-                var recaptchaResponse = grecaptcha.getResponse();
-                if (recaptchaResponse.length === 0) {
-                    alert("Please complete the CAPTCHA.");
-                    return false; // Prevent form submission
+            // Generate random math problem
+            function generateMathProblem() {
+                const num1 = Math.floor(Math.random() * 50) + 10; // Random number between 10-59
+                const num2 = Math.floor(Math.random() * 50) + 10; // Random number between 10-59
+                correctAnswer = num1 + num2;
+                $('#mathProblem').text(num1 + ' + ' + num2 + ' = ?');
+                $('#verificationAnswer').val('');
+                $('#verificationError').hide();
+            }
+
+            // Show verification modal
+            function showVerificationModal() {
+                generateMathProblem();
+                $('#verificationModal').addClass('show');
+                $('#verificationAnswer').focus();
+            }
+
+            // Hide verification modal
+            function hideVerificationModal() {
+                $('#verificationModal').removeClass('show');
+                $('#verificationAnswer').val('');
+                $('#verificationError').hide();
+            }
+
+            // Validate email format
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // Validate phone number (basic validation - accepts digits, spaces, dashes, parentheses)
+            function validatePhone(phone) {
+                const re = /^[\d\s\-\(\)\+]{10,}$/;
+                return re.test(phone.replace(/\s/g, ''));
+            }
+
+            // Validate contact (email or phone)
+            function validateContact(contact) {
+                return validateEmail(contact) || validatePhone(contact);
+            }
+
+            // Show error message
+            function showError(fieldId, errorId, message) {
+                $('#' + fieldId).addClass('error').removeClass('success');
+                $('#' + errorId).text(message).show();
+            }
+
+            // Show success state
+            function showSuccess(fieldId) {
+                $('#' + fieldId).addClass('success').removeClass('error');
+                $('#' + errorId + '-error').hide();
+            }
+
+            // Clear all errors
+            function clearErrors() {
+                $('.input-group input, .input-group textarea').removeClass('error success');
+                $('.error-message').hide();
+            }
+
+            // Validate form
+            function validateForm() {
+                let isValid = true;
+                clearErrors();
+
+                // Validate name
+                const name = $('#name').val().trim();
+                if (name === '') {
+                    showError('name', 'name-error', 'Please enter your name');
+                    isValid = false;
+                } else if (name.length < 2) {
+                    showError('name', 'name-error', 'Name must be at least 2 characters');
+                    isValid = false;
+                } else {
+                    $('#name').removeClass('error').addClass('success');
+                    $('#name-error').hide();
                 }
 
+                // Validate contact (email or phone)
+                const contact = $('#contact').val().trim();
+                if (contact === '') {
+                    showError('contact', 'contact-error', 'Please enter your email or phone number');
+                    isValid = false;
+                } else if (!validateContact(contact)) {
+                    showError('contact', 'contact-error', 'Please enter a valid email address or phone number');
+                    isValid = false;
+                } else {
+                    $('#contact').removeClass('error').addClass('success');
+                    $('#contact-error').hide();
+                }
+
+                // Validate message
+                const message = $('#message').val().trim();
+                if (message === '') {
+                    showError('message', 'message-error', 'Please enter your message');
+                    isValid = false;
+                } else if (message.length < 10) {
+                    showError('message', 'message-error', 'Message must be at least 10 characters');
+                    isValid = false;
+                } else {
+                    $('#message').removeClass('error').addClass('success');
+                    $('#message-error').hide();
+                }
+
+                return isValid;
+            }
+
+            // Submit form to server
+            function submitForm() {
                 $.ajax({
                     url: "https://script.google.com/macros/s/AKfycbxC4ZUygLaqQPrGkvnuPvrQNTVj6oEjJklvoGXpuo5bppPQJxlxNY7NZiXB-RMflF-Y2A/exec",
-                    data: $("#submit-form").serialize(),
+                    data: formData,
                     method: "post",
                     beforeSend: function () {
                         // Hide the form
                         $("#submit-form").hide();
                         // Show loading animation
                         $("#loadingAnimation").show();
+                        hideVerificationModal();
                     },
                     success: function (response) {
                         setTimeout(function () {
@@ -173,6 +287,73 @@
                         $("#loadingAnimation").hide();
                     }
                 });
+            }
+
+            // Handle form submission
+            $("#submit-form").submit(function(e) {
+                e.preventDefault();
+                
+                // Validate form first
+                if (!validateForm()) {
+                    // Scroll to first error
+                    const firstError = $('.input-group .error').first();
+                    if (firstError.length) {
+                        $('html, body').animate({
+                            scrollTop: firstError.offset().top - 100
+                        }, 500);
+                    }
+                    return false;
+                }
+
+                // Store form data
+                formData = $(this).serialize();
+                
+                // Show verification modal
+                showVerificationModal();
+            });
+
+            // Handle verification button click
+            $('#verifyBtn').click(function() {
+                const userAnswer = parseInt($('#verificationAnswer').val());
+                
+                if (isNaN(userAnswer)) {
+                    $('#verificationError').text('Please enter a valid number').show();
+                    return;
+                }
+
+                if (userAnswer === correctAnswer) {
+                    // Correct answer - submit form
+                    submitForm();
+                } else {
+                    // Wrong answer - show error and generate new problem
+                    $('#verificationError').text('Incorrect answer. Please try again.').show();
+                    generateMathProblem();
+                    $('#verificationAnswer').val('').focus();
+                }
+            });
+
+            // Handle cancel button
+            $('#cancelBtn').click(function() {
+                hideVerificationModal();
+            });
+
+            // Handle Enter key in verification input
+            $('#verificationAnswer').keypress(function(e) {
+                if (e.which === 13) {
+                    $('#verifyBtn').click();
+                }
+            });
+
+            // Close modal when clicking outside
+            $('#verificationModal').click(function(e) {
+                if ($(e.target).is('#verificationModal')) {
+                    hideVerificationModal();
+                }
+            });
+
+            // Real-time validation on input
+            $('#name, #contact, #message').on('blur', function() {
+                validateForm();
             });
         });
     </script>
@@ -339,6 +520,159 @@
             font-weight: bold;
             color: #000000
         }
+
+        /* Form Validation Styles */
+        .input-group {
+            position: relative;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: -20px;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            display: none;
+        }
+
+        .input-group input.error,
+        .input-group textarea.error {
+            border-color: #dc3545 !important;
+            box-shadow: 0px 0px 0px 1.5px rgba(220, 53, 69, 0.3) !important;
+        }
+
+        .input-group input.success,
+        .input-group textarea.success {
+            border-color: #28a745 !important;
+        }
+
+        /* Human Verification Modal Styles */
+        .verification-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        .verification-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .verification-modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .verification-modal-content h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .verification-modal-content p {
+            margin-bottom: 25px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .math-problem {
+            font-size: 32px;
+            font-weight: bold;
+            color: #304FFE;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .verification-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .verification-input:focus {
+            outline: none;
+            border-color: #304FFE;
+        }
+
+        .verification-error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .verification-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .verification-buttons button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-verify {
+            background-color: #304FFE;
+            color: white;
+        }
+
+        .btn-verify:hover {
+            background-color: #3F51B5;
+        }
+
+        .btn-cancel {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background-color: #5a6268;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -399,16 +733,6 @@
         })
     </script>
 
-    <script>
-        function validateCaptcha() {
-            var response = grecaptcha.getResponse();
-            if (response.length === 0) {
-                alert("Please complete the CAPTCHA.");
-                return false; // Prevent form submission
-            }
-            return true;
-        }
-    </script>
 
 
 
